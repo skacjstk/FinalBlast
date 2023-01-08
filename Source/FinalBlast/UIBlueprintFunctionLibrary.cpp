@@ -52,14 +52,14 @@ bool UUIBlueprintFunctionLibrary::ProjectWorldToScreenBidirectional(APlayerContr
 }
 
 /// <summary>
-/// GrappleUIDirection ÀÇ Screen Space ÀÇ À§Ä¡¸¦ ±¸ÇÏ´Â ÇÔ¼ö
+/// GrappleUIDirection ì˜ Screen Space ì˜ ìœ„ì¹˜ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜
 /// </summary>
 /// <param name="WorldContextObject"></param>
-/// <param name="InLocation">GrapplePointÀÇ World Location</param>
-/// <param name="EdgePercent">Screen Space ¹Ù±ùÀÏ °æ¿ì º¸¿©Áö´Â À§Ä¡°ª</param>
-/// <param name="OutScreenPosition">Out: ¹Ş¾ÆÁö´Â ScreenSpace Position</param>
-/// <param name="OutRotationAngleDegrees">°Å¸® ºñ·ÊÇØ¼­ µ¹¾Æ°¡´Â ¿øÀÇ ºñÀ²</param>
-/// <param name="bIsOnScreen">Screen ¿¡ ÀÖ´À³Ä?</param>
+/// <param name="InLocation">GrapplePointì˜ World Location</param>
+/// <param name="EdgePercent">Screen Space ë°”ê¹¥ì¼ ê²½ìš° ë³´ì—¬ì§€ëŠ” ìœ„ì¹˜ê°’</param>
+/// <param name="OutScreenPosition">Out: ë°›ì•„ì§€ëŠ” ScreenSpace Position</param>
+/// <param name="OutRotationAngleDegrees">ê±°ë¦¬ ë¹„ë¡€í•´ì„œ ëŒì•„ê°€ëŠ” ì›ì˜ ë¹„ìœ¨</param>
+/// <param name="bIsOnScreen">Screen ì— ìˆëŠëƒ?</param>
 void UUIBlueprintFunctionLibrary::FindScreenEdgeLocationForWorldLocation(UObject* WorldContextObject, const FVector& InLocation, const float EdgePercent, FVector2D& OutScreenPosition, float& OutRotationAngleDegrees, bool& bIsOnScreen)
 {
 	bIsOnScreen = false;
@@ -82,11 +82,11 @@ void UUIBlueprintFunctionLibrary::FindScreenEdgeLocationForWorldLocation(UObject
 	FVector Forward = PlayerCharacter->GetActorForwardVector();
 	FVector Offset = (InLocation - PlayerCharacter->GetActorLocation()).GetSafeNormal();
 
-	// ³»ÀûÀ¸·Î ¹æÇâÀÇ ÀÏÄ¡¼ºÀ» ±¸ÇÑ´Ù.
+	// ë‚´ì ìœ¼ë¡œ ë°©í–¥ì˜ ì¼ì¹˜ì„±ì„ êµ¬í•œë‹¤.
 	float DotProduct = FVector::DotProduct(Forward, Offset);
 	bool bLocationIsBehindCamera = (DotProduct < 0);
 
-	// ¹æÇâÀÌ ÀÏÄ¡ÇÒ °æ¿ì
+	// ë°©í–¥ì´ ì¼ì¹˜í•  ê²½ìš°
 	if (bLocationIsBehindCamera)
 	{
 		// For behind the camera situation, we cheat a little to put the
