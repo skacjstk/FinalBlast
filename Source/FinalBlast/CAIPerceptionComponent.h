@@ -13,6 +13,8 @@ UCLASS()
 class FINALBLAST_API UCAIPerceptionComponent : public UAIPerceptionComponent
 {
 	GENERATED_BODY()
-		UFUNCTION(BlueprintCallable, meta = (DisplayName = "getconfigs"))
-		FORCEINLINE TArray<UAISenseConfig*> GetAiSenseConfigs() { return SensesConfig; }
+public:
+	UFUNCTION(BlueprintCallable, Category = "AI|Preception")
+		TArray<UAISenseConfig*> GetAiSenseConfigs() { return SensesConfig; }
+	//	UFUNCTION(BlueprintImplementableEvent, meta = (DisplayName = "BeginPlay"))
 };
