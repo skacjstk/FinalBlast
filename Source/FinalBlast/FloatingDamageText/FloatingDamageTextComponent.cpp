@@ -69,11 +69,14 @@ void UFloatingDamageTextComponent::TickComponent(float DeltaTime, ELevelTick Tic
 
 		// Calculate the vertical offset based on how fat we (the camera) are from the floating text actor
 		AFloatingTextActor* textActor = ActiveTextActors[i];
+		// 자꾸 distance 구할때 오류나길래 cameraLocation은 없을 리가 없고, textActor가 삭제되서 생기는 문제라 생각.
+		if (textActor == nullptr) return;
 		const float distance = FVector::Dist(cameraLocation, textActor->GetAnchorLocation());
 		const float verticalOffset = distance / (viewportSize.X / viewportScale);
 
 		// Adjust(조정) the floating text actor's location by the calculated amount
 		textActor->SetActorLocation(textActor->GetAnchorLocation() + FVector(0.0f, 0.0f, i * verticalOffset * TextVerticalSpacing));
+		
 	}
 }
 
